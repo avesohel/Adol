@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help Adol Live - Medical Fundraiser</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8f9fa;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        opacity: 0.95;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .content-wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin: -3rem auto 3rem;
+        position: relative;
+      }
+
+      .main-content {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem;
+      }
+
+      .story-section {
+        margin-bottom: 2rem;
+      }
+
+      .story-section h2 {
+        color: #667eea;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .story-section p {
+        margin-bottom: 1rem;
+        color: #555;
+        font-size: 1.05rem;
+      }
+
+      .highlight-box {
+        background: #f0f4ff;
+        border-left: 4px solid #667eea;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 8px;
+      }
+
+      .highlight-box strong {
+        color: #667eea;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+      }
+
+      .donation-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .donation-card h3 {
+        color: #667eea;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .cost-breakdown {
+        background: #fff3cd;
+        border: 2px solid #ffc107;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cost-breakdown h4 {
+        color: #856404;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .cost-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+      }
+
+      .cost-item span:last-child {
+        font-weight: 600;
+        color: #856404;
+      }
+
+      .account-details {
+        background: #e8f4f8;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .account-details h4 {
+        color: #0c5460;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .account-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
+      }
+
+      .account-row strong {
+        color: #0c5460;
+        min-width: 120px;
+      }
+
+      .account-row span {
+        text-align: right;
+        word-break: break-all;
+        flex: 1;
+      }
+
+      .contact-email {
+        text-align: center;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        margin-top: 1rem;
+      }
+
+      .contact-email a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+
+      .urgent-banner {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .father-message {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2rem 0;
+        font-style: italic;
+        position: relative;
+      }
+
+      .father-message::before {
+        content: '"';
+        font-size: 4rem;
+        color: #667eea;
+        opacity: 0.3;
+        position: absolute;
+        top: -10px;
+        left: 15px;
+      }
+
+      .father-message p {
+        color: #2c3e50;
+        font-size: 1.15rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .father-message .signature {
+        text-align: right;
+        margin-top: 1rem;
+        font-weight: 600;
+        color: #667eea;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+        margin: 2rem 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: #667eea;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -2.5rem;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        background: #667eea;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 0 0 3px #667eea;
+      }
+
+      .timeline-item strong {
+        color: #667eea;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      .document-links {
+        margin: 1.5rem 0;
+      }
+
+      .doc-link {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        margin: 0.5rem 0.5rem 0.5rem 0;
+        font-size: 0.95rem;
+        transition: background 0.3s;
+      }
+
+      .doc-link:hover {
+        background: #5568d3;
+      }
+
+      footer {
+        background: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+
+      .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 12px;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: white;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .image-caption {
+        padding: 1rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-align: center;
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .treatment-photo {
+        float: right;
+        margin: 0 0 1rem 1rem;
+        width: 250px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .family-heart {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        margin-left: 0.5rem;
+        position: relative;
+        animation: heartbeat 2s infinite;
+      }
+
+      .family-heart::before {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+        border-radius: 50% 50% 0 50%;
+        transform: rotate(90deg);
+        top: -12px;
+        left: 12px;
+      }
+
+      .family-heart::after {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(135deg);
+        top: 12px;
+        left: -12px;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1) rotate(-45deg);
+        }
+        50% {
+          transform: scale(1.1) rotate(-45deg);
+        }
+      }
+
+      .hope-quote {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        margin: 2rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hope-quote::before {
+        content: "🌟";
+        font-size: 3rem;
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        opacity: 0.7;
+      }
+
+      .hope-quote::after {
+        content: "💙";
+        font-size: 3rem;
+        position: absolute;
+        bottom: -10px;
+        right: 20px;
+        opacity: 0.7;
+      }
+
+      .hope-quote blockquote {
+        margin: 0;
+        font-size: 1.2rem;
+        font-style: italic;
+        position: relative;
+        z-index: 2;
+      }
+
+      @media (max-width: 968px) {
+        .content-wrapper {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .image-gallery {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .treatment-photo {
+          float: none;
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <div class="container">
+        <h1>🙏 Help Adol Live A Life of Hope</h1>
+        <p>
+          Join us in supporting 14-year-old Taosif Adol's fight against Chronic
+          Myeloid Leukemia
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content-wrapper">
+        <div class="main-content">
+          <div class="urgent-banner">
+            ⚠️ URGENT: Adol needs Bone Marrow Transplantation (BMT) - Your
+            support can save a life
+          </div>
+
+          <!-- Emotional Image Gallery -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <img
+                src="images/Baitullah.jpg"
+                alt="Adol as a happy, healthy child before his diagnosis"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmNGZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2NjdlZWEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5BZG9sJ3MgSm95ZnVsIFNt5JTwaXR0bGUgc3RvcnkgYmVmb3JlIGlsbG5lc3M8L3RleHQ+PC9zdmc+'" />
+              <div class="image-caption">
+                A joyful 11-year-old Adol, full of life and happiness
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img
+                src="images/family.jpg"
+                alt="Adol with his loving parents and family"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmNGZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2NjdlZWEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5BZG9sIHdpdGggSGlzIExvdmluZyBGYW1pbHk8L3RleHQ+PC9zdmc+'" />
+              <div class="image-caption">
+                Adol with his parents who have sacrificed everything for his
+                care
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img
+                src="images/adol_1.jpgd"
+                alt="Adol fighting bravely against his illness"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmNGZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2NjdlZWEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5BZG9sIEZpZ2h0aW5nIEJyYXZlbHk8L3RleHQ+PC9zdmc+'" />
+              <div class="image-caption">
+                Despite pain and treatment, Adol's spirit remains unbroken
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img
+                src="images/hospital.jpg"
+                alt="Adol receiving life-saving treatment at NUH Singapore"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmNGZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2NjdlZWEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5BIGhvc2lzcHRhbCBDayBVU0ggU2luZ2Fwb3JlPC90ZXh0Pjwvc3Zn+'" />
+              <div class="image-caption">
+                Receiving specialized care at NUH Singapore - hope for tomorrow
+              </div>
+            </div>
+          </div>
+
+          <div class="story-section">
+            <h2>💙 Adol's Courageous Journey</h2>
+            <p>
+              Taosif Adol was a lively 11-year-old boy in 2022, full of joy and
+              happiness like any other child his age. He enjoyed the blessings
+              of a loving family, a wonderful learning atmosphere at St.
+              Gregory's High School with his classmates and teachers, and
+              pleasurable pastimes with friends and family.
+            </p>
+
+            <p>
+              Everything changed when Adol started complaining about severe pain
+              in different parts of his body that made him almost immobile.
+              After consulting with physicians and undergoing diagnostic tests,
+              he was diagnosed with
+              <strong>Chronic Myeloid Leukemia (CML)</strong>, a rare but
+              aggressive form of blood cancer.
+            </p>
+          </div>
+
+          <div class="story-section">
+            <h2>🏥 Treatment Journey</h2>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>2022 - Dhaka, Bangladesh</strong>
+                <p>
+                  Initial treatment began in Dhaka, but his condition did not
+                  improve significantly.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <strong>Apollo Hospital, Chennai, India</strong>
+                <p>
+                  Adol received further treatment, but severe drug reactions
+                  forced the treatment to stop after approximately two months.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <strong
+                  >2023-Present - National University Hospital (NUH),
+                  Singapore</strong
+                >
+                <p>
+                  Under the close medical supervision of Professor Allen's team,
+                  Adol has been receiving advanced treatment. However,
+                  sequential applications of newer generational medicines have
+                  shown limited effectiveness.
+                </p>
+              </div>
+            </div>
+
+            <div class="document-links">
+              <a
+                href="https://drive.google.com/file/d/1yq_ugM1I2K8nFIzAnaMqdeP2fU2e_aWB/view?usp=drive_link"
+                target="_blank"
+                class="doc-link"
+                >📄 View Medical Records</a
+              >
+              <a
+                href="https://drive.google.com/file/d/1zZM_KCbl7-cI5KGZjOEMxpV4rzpf9C4z/view?usp=drive_link"
+                target="_blank"
+                class="doc-link"
+                >📋 BMT Preparation Details</a
+              >
+              <a
+                href="https://drive.google.com/file/d/141E8klQrSvHr1XFC5xYyKc0tCRmPnKEP/view?usp=drive_link"
+                target="_blank"
+                class="doc-link"
+                >💰 Cost Estimation</a
+              >
+            </div>
+          </div>
+
+          <div class="story-section">
+            <h2>💔 The Financial Crisis</h2>
+            <p>
+              Adol's father, a service-holder in an autonomous institute, has
+              exhausted almost all of his financial resources and physical
+              assets including his savings, properties, and other belongings.
+              With nothing else to sell and the burden of high-cost medication
+              for his only ward, he has had to borrow significant amounts of
+              money from friends, relatives, and well-wishers.
+            </p>
+
+            <div class="highlight-box">
+              <strong>Current Situation:</strong>
+              As the only earning member in the family, with his regular salary
+              as the only source of family earnings, Adol's father is on the
+              edge of financial collapse. The medical team at NUH suggests that
+              Adol may need to undergo Bone Marrow Transplantation (BMT) if his
+              current medication fails.
+            </div>
+          </div>
+
+          <div class="father-message">
+            <p>
+              "My only son, Taosif Adol, is my lifeline. My wife and I cannot
+              imagine life without him. Even a drop of your kindness can make a
+              world of difference."
+            </p>
+            <div class="signature">— A S M Sayem (Adol's Father)</div>
+          </div>
+
+          <div class="story-section">
+            <h2>🤝 How You Can Help</h2>
+            <p>
+              An act of kindness in supporting this young life to continue
+              enjoying the world around us would be greatly appreciated. Adol's
+              family will remain eternally grateful to those who extend their
+              compassion, generosity, and support to overcome this crisis.
+            </p>
+
+            <div class="highlight-box">
+              <strong>Every contribution matters:</strong>
+              Whether large or small, your donation will directly support Adol's
+              medical treatment and give him a fighting chance at life. Your
+              generosity can help a family stay together and give hope to a
+              14-year-old boy who dreams of a future.
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <div class="donation-card">
+            <span>
+              Your support — <br />no matter the amount — can save his life. </span
+            ><br />
+            <h3>💚 Support Adol</h3>
+            <div class="cost-breakdown">
+              <h4>💵 Financial Need</h4>
+              <div class="cost-item">
+                <span>BMT Procedure:</span>
+                <span>$300,000 - $400,000</span>
+              </div>
+              <div class="cost-item">
+                <span>Monthly Accommodation:</span>
+                <span>$5,500/month</span>
+              </div>
+              <div
+                style="
+                  border-top: 2px solid #856404;
+                  margin-top: 1rem;
+                  padding-top: 1rem;
+                  font-weight: bold;
+                  color: #856404;
+                ">
+                <div class="cost-item">
+                  <span>Total Estimated:</span>
+                  <span>$300,000 - $400,000+</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="account-details">
+              <h4>🏦 Bank Account Details</h4>
+              <div class="account-row">
+                <strong>Account Name:</strong>
+                <span>A S M SAYEM</span>
+              </div>
+              <div class="account-row">
+                <strong>Bank:</strong>
+                <span>Mutual Trust Bank (MTB)</span>
+              </div>
+              <div class="account-row">
+                <strong>Account No:</strong>
+                <span>1311002022592</span>
+              </div>
+              <div class="account-row">
+                <strong>Branch:</strong>
+                <span>Dania, Dhaka South</span>
+              </div>
+              <div class="account-row">
+                <strong>Routing No:</strong>
+                <span>145276315</span>
+              </div>
+            </div>
+
+            <div class="contact-email">
+              <p style="margin-bottom: 0.5rem; font-size: 0.9rem; color: #666">
+                For queries, contact:
+              </p>
+              <a href="mailto:sayem444@gmail.com">sayem444@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Save Adol Campaign | Every contribution brings hope</p>
+      <p style="margin-top: 0.5rem; opacity: 0.8">
+        Thank you for your compassion and generosity
+      </p>
+    </footer>
+  </body>
+</html>
